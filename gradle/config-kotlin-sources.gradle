@@ -55,6 +55,28 @@ if (project.plugins.hasPlugin("kotlin")
             'build/tmp/kapt/main/kotlinGenerated')
       }
     }
+
+    apply plugin: 'build-time-tracker'
+
+    buildtimetracker {
+      reporters {
+        csv {
+          output "build/times.csv"
+          append true
+          header false
+        }
+
+        summary {
+          ordered false
+          threshold 50
+          barstyle "unicode"
+        }
+
+        csvSummary {
+          csv "build/times.csv"
+        }
+      }
+    }
   }
 }
 

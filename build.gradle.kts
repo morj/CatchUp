@@ -21,6 +21,7 @@ import org.gradle.internal.scan.config.BuildScanConfig
 
 buildscript {
   repositories {
+    mavenLocal()
     google()
     mavenCentral()
     jcenter()
@@ -38,6 +39,7 @@ buildscript {
 
   dependencies {
     classpath("com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta02") // https://issuetracker.google.com/issues/115738511
+    classpath("net.rdrei.android.buildtimetracker:gradle-plugin:0.11.+")
     classpath(deps.android.gradlePlugin)
     classpath(deps.kotlin.gradlePlugin)
     classpath(deps.kotlin.noArgGradlePlugin)
@@ -66,6 +68,7 @@ subprojects { parent!!.path.takeIf { it != rootProject.path }?.let { evaluationD
 allprojects {
 
   repositories {
+    mavenLocal()
     google()
     mavenCentral()
     jcenter()
